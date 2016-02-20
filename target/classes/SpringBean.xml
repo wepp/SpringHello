@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<context:annotation-config/>
+	
+	<bean id="helloBean" class="com.isaiev.spring.hello.HelloWorld">
+		<property name="name" value="Isaiev" />
+	</bean>
+	
+	<bean id="sportCarBMW" class="com.isaiev.spring.hello.SportCar"
+		p:model="BMW" />
+	
+	<bean id="sportCarAudi" class="com.isaiev.spring.hello.SportCar">
+		<constructor-arg value = "Audi"/>
+	</bean>
+	
+	<bean id="sportCarTransporter" class="com.isaiev.spring.hello.Transporter">
+		<constructor-arg name="cars">
+			<list>
+				<ref bean="sportCarBMW"/>
+				<ref bean="sportCarAudi"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+</beans>
